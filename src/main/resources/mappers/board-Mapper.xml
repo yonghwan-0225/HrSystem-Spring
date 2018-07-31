@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.comtrue.mappers.BoardMapper">
+
+ <insert id="create">
+ insert into emp (position, name, number, email) 
+ values(#{position},#{name}, #{number}, #{email})
+ </insert>
+
+<select id="read" resultType="com.comtrue.emp2.dto.EmpList">
+ select id, position, name, number, email
+ from emp
+ where id=#{id}
+ </select>
+
+<update id="update">
+ update emp set position =#{position}, name =#{name} , number =#{number} , email =#{email} 
+ where id=#{id}
+ </update>
+
+<delete id="delete">
+delete from emp where id= #{id}
+</delete>
+
+ <select id="listAll" resultType="com.comtrue.emp2.dto.EmpList">
+ <![CDATA[
+ select id, position, name, number, email
+ from emp 
+ where id > 0 
+ order by name asc
+ ]]>  
+ </select>
+
+
+
+ </mapper>
